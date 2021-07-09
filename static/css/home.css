@@ -1,0 +1,47 @@
+*{
+    box-sizing: border-box;  
+} 
+.body{
+    font-family: 'Open Sans', sans-serif;
+    background: rgb(252, 252, 253)!important;
+}
+.instructions{
+    margin-top: 40px;
+    /* background: white;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px grey; */
+}
+.btn1{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background: white;
+    color: #4F6E71;
+    border: 1px solid;
+    border-radius: 4px;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.btn1:hover{
+    background: linear-gradient(180deg, #4F6E71 0%, #324146 100%);
+    color: white;
+    cursor: pointer;
+}
+.btn-2{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 40%;
+    background: linear-gradient(180deg, #4F6E71 0%, #324146 100%);
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.btn-2:hover{
+    background: white;
+    color: #4F6E71;
+    border: 1px solid;
+    cursor: pointer;
+}

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+.img-display{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.text-header{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    color: #4F6E71;
+}
+.header-paragraph{
+    font-family: 'Open Sans', sans-serif;
+    color: #4F6E71;
+    font-weight: lighter;
+}
+.header-link:hover{
+    color: #1D4350 !important;
+}
+.form-labels{
+    font-family: 'Open Sans', sans-serif;
+    color: #4F6E71;
+    font-weight: bold;
+    font-size: 18px;
+}
+.btn1{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 60%;
+    background: linear-gradient(180deg, #4F6E71 0%, #324146 100%);
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.btn1:hover{
+    background: white;
+    color: #4F6E71;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    body{
+        overflow: hidden;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    body{
+        overflow: hidden;
+    }
+}

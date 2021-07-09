@@ -1,0 +1,62 @@
+*{
+    box-sizing: border-box;  
+} 
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.btn1{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    color: white;
+    background: linear-gradient(180deg, #4F6E71 0%, #324146 100%);
+    border: 1px solid;
+    border-radius: 4px;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.btn1:hover{
+    background: white;
+    color: #4F6E71;
+    cursor: pointer;
+}
+.text-header{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    color: #4F6E71;
+}
+form{
+    margin-top: 40px;
+    background: #DDE1E3;
+    border-radius: 10px;
+    box-shadow: 12px 12px 22px grey;
+}
+.form-labels{
+    font-family: 'Open Sans', sans-serif;
+    color: #4F6E71;
+    font-weight: bold;
+    font-size: 18px;
+}
+.upload-box{
+    font-size: 16px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 2px grey;
+    width: 100%;
+    outline: none;
+}
+::-webkit-file-upload-button{
+    color: white;
+    background: #4F6E71;
+    padding: 10px;
+    border: none;
+    border-top-left-radius: 10px;
+    outline: none;
+}
+::-webkit-file-upload-button:hover{
+    background: white;
+    border: 2px solid #4F6E71;
+    color: #4F6E71;
+}

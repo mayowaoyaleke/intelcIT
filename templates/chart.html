@@ -1,0 +1,584 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="Webpixels">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>:: BigBucket :: Home</title>
+
+<link rel="stylesheet" href="{% static 'assets/vendor/themify-icons/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'assets/vendor/fontawesome/css/font-awesome.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/vendor/charts-c3/plugin.css' %}">
+<link rel="stylesheet" href="{% static 'assets/vendor/jvectormap/jquery-jvectormap-2.0.3.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" type="text/css">
+
+<link rel="stylesheet" href="{% static 'assets/vendor/chartist/css/chartist.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css' %}">
+
+</head>
+<body class="theme-indigo">
+
+
+
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="card widget_2 big_icon traffic">
+                        <div class="body">
+                            <h6>Total Customers</h6>
+                            <h2>{{ total }} <small class="info">Customer</small></h2>
+{#                            <small>2% higher than last month</small>#}
+{#                            <div class="progress mb-0">#}
+{#                                <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="card widget_2 big_icon sales">
+                        <div class="body">
+                            <h6>Churn Rate</h6>
+                            <h2>{{ totalChurn }}% <small class="info">Rate</small></h2>
+{#                            <small>6% higher than last month</small>#}
+{#                            <div class="progress mb-0">#}
+{#                                <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" style="width: 38%;"></div>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row clearfix">
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card">
+                            <div class="header">
+                                <h2><strong>Customer</strong> Churn</h2>
+                            </div>
+                            <div class="body">
+                                <div id="bar-chart" class="ct-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Voice Mail Plan Subscription</h2>
+                        </div>
+                        <div class="body">
+                            <div id="m_donut_chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card">
+                            <div class="header">
+                                <h2><strong>Customer Call</strong> Charge </h2>
+                            </div>
+                            <div class="body">
+                               <div id="bar-chart2" class="ct-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>International Plan Subscription</h2>
+                        </div>
+                        <div class="body">
+                            <div id="m_donut_chart2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-md-12 col-lg-8">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Voice Mal Plan Subscription</h2>
+                        </div>
+                        <div class="body">
+                            <div id="horizontalbar-chart2" class="ct-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Total Calls</h2>
+                        </div>
+                        <div class="body text-center">
+                            <div id="chart-pie" class="c3_chart d_distribution"></div>
+                            <button class="btn btn-primary mt-4 mb-4">View More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                        <div class="card">
+                            <div class="header">
+                                <h2>Customer Demography</h2>
+                            </div>
+                            <div class="body">
+                                <div id="world-map-markers" class="jvector-map" style="height: 405px;"></div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Core -->
+<script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script>
+<script src="{% static 'assets/bundles/vendorscripts.bundle.js' %}"></script>
+<script src="{% static 'assets/bundles/c3.bundle.js' %}"></script>
+<script src="{% static 'assets/bundles/jvectormap.bundle.js' %}"></script> <!-- JVectorMap Plugin Js -->
+<script src="{% static 'assets/bundles/chartist.bundle.js' %}"></script>
+<script src="{% static 'assets/vendor/chartist/polar_area_chart.js' %}"></script><!-- Polar Area Chart Js -->
+
+<script src="{% static 'assets/bundles/flotscripts.bundle.js' %}"></script> <!-- flot charts Plugin Js -->
+<script src="{% static 'assets/bundles/morrisscripts.bundle.js' %}"></script>
+<script src="{% static 'assets/vendor/jvectormap/jquery-jvectormap-us-aea-en.js' %}"></script>
+<script src="{% static 'assets/js/theme.js' %}"></script>
+<script>
+
+$(function() {
+    "use strict";
+
+    setTimeout(function(){
+        $(document).ready(function(){
+            var chart = c3.generate({
+                bindto: '#chart-bar-rotated', // id of chart wrapper
+                data: {
+                    columns: [
+                        // each columns data
+                        ['data1', 11, 8, 15, 18, 19, 17],
+                        ['data2', 7, 7, 5, 7, 9, 12]
+                    ],
+                    type: 'bar', // default type of chart
+                    colors: {
+                        'data1': bigbucket.colors["azure"],
+                        'data2': bigbucket.colors["pink"]
+                    },
+                    names: {
+                        // name of each serie
+                        'data1': 'Earnings',
+                        'data2': 'Expense'
+                    }
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                        // name of each category
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+                    },
+                    rotated: true,
+                },
+                bar: {
+                    width: 16
+                },
+                legend: {
+                    show: true, //hide legend
+                },
+                padding: {
+                    bottom: 0,
+                    top: 0
+                },
+            });
+        });
+        $(document).ready(function(){
+            var chart = c3.generate({
+                bindto: '#chart-area-step', // id of chart wrapper
+                data: {
+                    columns: [
+                        // each columns data
+                        ['data1', 11, 8, 15, 18, 19, 17],
+                        ['data2', 7, 7, 5, 7, 9, 12]
+                    ],
+                    type: 'area-step', // default type of chart
+                    colors: {
+                        'data1': bigbucket.colors["pink"],
+                        'data2': bigbucket.colors["azure"]
+                    },
+                    names: {
+                        // name of each serie
+                        'data1': 'Online',
+                        'data2': 'Offline'
+                    }
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                        // name of each category
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+                    },
+                },
+                legend: {
+                    show: true, //hide legend
+                },
+                padding: {
+                    bottom: 0,
+                    top: 0,
+                    left: -10,
+                },
+            });
+        });
+        $(document).ready(function(){
+            var chart = c3.generate({
+                bindto: '#chart-pie', // id of chart wrapper
+                data: {
+                    columns: [
+                        // each columns data
+                        ['Day', {{ DataLoop.calls.Day }}],
+                        ['Evening', {{ DataLoop.calls.Evening }}],
+                        ['Night', {{ DataLoop.calls.Night }}],
+                        ['International', {{ DataLoop.calls.International }}],
+
+
+                    ],
+                    type: 'pie', // default type of chart
+                    colors: {
+                        'Day': bigbucket.colors["pink"],
+                        'Evening': bigbucket.colors["azure"],
+                        'Night': bigbucket.colors["gray"],
+                        'International': bigbucket.colors["orange"],
+                    },
+                    names: {
+                        // name of each series
+                        'Day': 'Day',
+                        'Evening': 'Evening',
+                        'Night': 'Night',
+                        'International': 'International',
+                    }
+                },
+                axis: {
+                },
+                legend: {
+                    show: true, //hide legend
+                },
+                padding: {
+                    bottom: 0,
+                    top: 0
+                },
+            });
+        });
+    }, 50);
+
+    setTimeout( function(){
+        "use strict";
+        var mapData =  {
+"US-AL": 7.2,
+"US-AK": 8.6,
+"US-AZ": 6.3,
+"US-AR": 6.9,
+"US-CA": 7.2,
+"US-CO": 6.2,
+"US-CT": 6.3,
+"US-DE": 5.6,
+"US-DC": 9.1,
+"US-FL": 6.3,
+"US-GA": 7.4,
+"US-HI": 4.4,
+"US-ID": 5.8,
+"US-IL": 7.9,
+"US-IN": 6.9,
+"US-IA": 5.1,
+"US-KS": 5.5,
+"US-KY": 7.5,
+"US-LA": 9,
+"US-ME": 5.7,
+"US-MD": 5.7,
+"US-MA": 6.4,
+"US-MI": 8.9,
+"US-MN": 5.5,
+"US-MS": 9.3,
+"US-MO": 6.7,
+"US-MT": 5.3,
+"US-NE": 4.9,
+"US-NV": 5.8,
+"US-NH": 4.8,
+"US-NJ": 6.3,
+"US-NM": 7.3,
+"US-NY": 7,
+"US-NC": 7.1,
+"US-ND": 3.8,
+"US-OH": 7.4,
+"US-OK": 6.6,
+"US-OR": 7.5,
+"US-PA": 6.7,
+"US-RI": 6.1,
+"US-SC": 8,
+"US-SD": 4.9,
+"US-TN": 7.1,
+"US-TX": 7.6,
+"US-UT": 5.3,
+"US-VT": 5.3,
+"US-VA": 5.2,
+"US-WA": 7.2,
+"US-WV": 7.2,
+"US-WI": 6.2,
+"US-WY": 5.3
+};
+        if( $('#world-map-markers').length > 0 ){
+            $('#world-map-markers').vectorMap({
+                map: 'us_aea_en',
+                backgroundColor: 'transparent',
+                borderColor: '#fff',
+                borderOpacity: 0.25,
+                borderWidth: 0,
+                color: '#e6e6e6',
+                regionStyle : {
+                    initial : {
+                        fill: '#4f5b65'
+                    }
+                },
+
+                markerStyle: {
+                initial: {
+                            r: 5,
+                            'fill': '#fff',
+                            'fill-opacity':1,
+                            'stroke': '#000',
+                            'stroke-width' : 1,
+                            'stroke-opacity': 0.4
+                        },
+                    },
+
+                markers : [{
+                    latLng : [21.00, 78.00],
+                    name : 'INDIA : 350'
+
+                },
+                {
+                    latLng : [-33.00, 151.00],
+                    name : 'Australia : 250'
+
+                },
+                {
+                    latLng : [36.77, -119.41],
+                    name : 'USA : 250'
+
+                },
+                {
+                    latLng : [55.37, -3.41],
+                    name : 'UK   : 250'
+
+                },
+                {
+                    latLng : [25.20, 55.27],
+                    name : 'UAE : 250'
+
+                }],
+
+                series: {
+                    regions: [{
+                        values: mapData,
+                        attribute: 'fill'
+                    }],
+                    onRegionTipShow: function(event, label, code){
+        label.html(
+          '<b>'+label.html()+'</b></br>'+
+          '<b>Unemployment rate: </b>'+data.states[val][code]+'%'
+        );
+      }
+                },
+                hoverOpacity: null,
+                normalizeFunction: 'linear',
+                zoomOnScroll: false,
+                scaleColors: ['#000000', '#000000'],
+                selectedColor: '#000000',
+                selectedRegions: [],
+                enableZoom: false,
+                hoverColor: '#fff',
+            });
+        }
+    }, 100);
+});
+
+
+$(document).ready(function(){
+
+
+
+    MorrisDonutChart();
+    var dataHorizontalBar = {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        series: [
+            [5, 4, 3, 7, 5, 10, 3],
+            [3, 2, 9, 5, 4, 6, 4]
+        ]
+    };
+    new Chartist.Bar('#horizontalbar-chart', dataHorizontalBar, {
+        height: "270px",
+        seriesBarDistance: 15,
+        reverseData: true,
+        horizontalBars: true,
+        axisY: {
+            offset: 75
+        }
+    });
+
+    new Chartist.Bar('#horizontalbar-chart2', dataHorizontalBar, {
+        height: "270px",
+        seriesBarDistance: 15,
+        reverseData: true,
+        horizontalBars: true,
+        axisY: {
+            offset: 75
+        }
+    });
+
+
+});
+
+
+$(document).ready(function(){
+    var data = {
+        labels: ['Yes', 'No'],
+        series: [
+            [{{ Yes_no.yes }},{{ Yes_no.no }}],
+        ]
+    };
+    options = {
+        height: "300px",
+        axisX: {
+            showGrid: false
+        },
+        plugins: [
+            Chartist.plugins.tooltip({
+                appendToBody: true
+            }),
+        ]
+    };
+    new Chartist.Bar('#bar-chart', data, options);
+
+var data = {
+        labels: ['Day', 'Evening','Night', 'International'],
+        series: [
+            [{{ DataLoop.charge.Day }},{{ DataLoop.charge.Evening }},{{ DataLoop.charge.Night }},{{ DataLoop.charge.International }},],
+        ]
+    };
+    options = {
+        height: "300px",
+        axisX: {
+            showGrid: false
+        },
+        plugins: [
+            Chartist.plugins.tooltip({
+                appendToBody: true
+            }),
+        ]
+    };
+    new Chartist.Bar('#bar-chart2', data, options);
+
+
+
+
+
+
+
+
+
+    var barChartData = [];
+    for (var i = 0; i <= 10; i += 1) {
+        barChartData.push([i, parseInt(Math.random() * 30)]);
+    }
+
+    $.plot('#bar_chart2', [barChartData], {
+        series: {
+            stack: 0,
+            lines: {
+                show: false,
+                fill: true,
+                steps: false
+            },
+            bars: {
+                show: true,
+                barWidth: 0.5
+            },
+            color: '#72c2ff'
+        },
+        grid: {
+            hoverable: true,
+            autoHighlight: false,
+            borderColor: 'transparent',
+            borderWidth: 1,
+            tickColor: 'transparent'
+        }
+    });
+
+
+});
+
+
+function MorrisDonutChart() {
+    Morris.Donut({
+        element: 'm_donut_chart',
+        data: [
+        {
+            label: "Customer With Voice Mail Plan",
+            value: {{ mail_plan_YN.yes }},
+
+        },  {
+            label: "Customer Without Voice Mail Plan",
+            value: {{ mail_plan_YN.no }},
+        }],
+        labelColor: "#adb5bd",
+        resize: true,
+        colors: ['#2cbfb7', '#3dd1c9', '#60ded7', '#a1ece8']
+    });
+}
+
+function MorrisDonutChart() {
+    Morris.Donut({
+        element: 'm_donut_chart',
+        data: [
+        {
+            label: "Customer With Voice Mail Plan",
+            value: {{ mail_plan_YN.yes }},
+
+        },  {
+            label: "Customer Without Voice Mail Plan",
+            value: {{ mail_plan_YN.no }},
+        }],
+        labelColor: "black",
+        resize: true,
+        colors: ['#2cbfb7', '#3dd1c9', '#60ded7', '#a1ece8']
+    });
+    Morris.Donut({
+        element: 'm_donut_chart2',
+        data: [
+        {
+            label: "Customer With International Plan",
+            value:{{ DataLoop.International_plan.no }},
+
+        },  {
+            label: "Customer Without International Plan",
+            value: {{ DataLoop.International_plan.yes }},
+        }],
+        labelColor: "black",
+        resize: true,
+        colors: ['red', 'orange', ]
+    });
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!--Image Display-->
+    <div class="row">
+        <div class="col-xl-5 img-display text-left d-xl-block d-none"> <!--Bootstrap to make the image collapse when in smaller devices-->
+            <img src="{% static 'Images/Login.jpg' %}" class="img-fluid">
+        </div>
+        <!--Login form-->
+        <div class="col-xl-7 my-auto">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="container pl-5 pt-5 pb-5">
+                    <h1 class="text-header mb-2">Login</h1>
+                    <p class="header-paragraph mb-4">Don't have an Account?
+                        <span><a class="header-link" href="{% url 'signup' %}"
+                                style="color: #395052; font-weight: bold; text-decoration: none;">Sign Up</a></span>
+                    </p>
+                    <label class="form-labels mb-3">Email</label>
+                    <input required type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        title="Email must contain @ and . " class="form-control pt-4 pb-4 mb-4" style="width: 70%;"
+                        placeholder="name@website.com"> <!--Making the fields required and setting a format for data collection-->
+                    <label class="form-labels mb-3">Password</label>
+                    <input required type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Password must be 8 characters long consisting of at least a small letter, capital letter and number"
+                        placeholder="*******" class="form-control pt-4 pb-4 mb-4" style="width: 70%;"> <!--Making the fields required and setting a format for data collection-->
+                    <div class="form-btn">
+                        <input type="submit" value="Login" class="btn1 mt-4 mb-5">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
